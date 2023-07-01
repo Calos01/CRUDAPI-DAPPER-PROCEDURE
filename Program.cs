@@ -1,3 +1,5 @@
+using CRUDAPI_DAPPER_PROCEDURE.DbContext;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
@@ -6,6 +8,10 @@ builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
+//Conexion
+builder.Services.AddSingleton(new ConexionBD(builder.Configuration.GetConnectionString("Conexion")));
+//Scoped
+builder.Services.AddScoped<IProducto, ProductoRepository>();
 
 var app = builder.Build();
 
