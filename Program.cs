@@ -13,6 +13,14 @@ builder.Services.AddSingleton(new ConexionBD(builder.Configuration.GetConnection
 //Scoped
 builder.Services.AddScoped<IProducto, ProductoRepository>();
 
+//CORS
+builder.Services.AddCors(options => options.AddPolicy("AllowWebapp",
+                                    builder => builder.AllowAnyOrigin()
+                                                    .AllowAnyHeader()
+                                                    .AllowAnyMethod()));
+
+
+
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
@@ -21,6 +29,9 @@ if (app.Environment.IsDevelopment())
     app.UseSwagger();
     app.UseSwaggerUI();
 }
+
+//CORS
+app.UseCors("AllowWebapp");
 
 app.UseHttpsRedirection();
 
