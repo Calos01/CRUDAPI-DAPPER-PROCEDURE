@@ -64,5 +64,6 @@ namespace CRUDAPI_DAPPER_PROCEDURE.DbContext
                 return  con.Query<Producto>("ObtenerProductos", commandType: CommandType.StoredProcedure).ToList();
             }
         }
-    }
+		
+	}
 }

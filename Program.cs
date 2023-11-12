@@ -12,6 +12,7 @@ builder.Services.AddSwaggerGen();
 builder.Services.AddSingleton(new ConexionBD(builder.Configuration.GetConnectionString("Conexion")));
 //Scoped
 builder.Services.AddScoped<IProducto, ProductoRepository>();
+builder.Services.AddScoped<IResultado, ResultadoRepository>();
 
 //CORS
 builder.Services.AddCors(options => options.AddPolicy("AllowWebapp",
